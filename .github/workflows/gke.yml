@@ -12,7 +12,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: tf-cluster    # Add your cluster name here.
+  GKE_CLUSTER: diego-cluster    # Add your cluster name here.
   GKE_ZONE: us-central1   # Add your cluster zone here.
   #DEPLOYMENT_NAME: gke-test # Add your deployment name here .
   DEPLOYMENT_NAME: gke-hello-app
@@ -53,7 +53,7 @@ jobs:
     # Get the GKE credentials so we can deploy to the cluster
     - run: |-
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
-    # Deploy sample image to the GKE cluster
+    # Deploy sample image to the GKE cluster 
     - name: Deploy
       run: |-
         kubectl apply -f deployment.yaml
